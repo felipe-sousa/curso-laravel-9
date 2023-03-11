@@ -40,7 +40,7 @@ class StoreUpdateUserFormRequest extends FormRequest
             ]
         ]; 
 
-        if ($this->method('PUT')) {
+        if ($this->isMethod('PUT')) {
             $rules['password'] = [                
                 'password' => [
                     'nullable',
