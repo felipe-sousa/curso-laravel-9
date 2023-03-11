@@ -55,11 +55,21 @@ class UserController extends Controller
 
         return view('users.edit', compact('user'));
     }
-    public function update(Request $request, $id)
+    public function update(StoreUpdateUserFormRequest $request, $id)
     {
         if (!$user = User::find($id))
             return redirect()->route('users.index');
 
-        dd($request->all());
+
+        // $user->name = $request->get('name');
+        // $user->save();
+
+        $data = $request->only(['name', 'email']);
+        if ($request->password)
+            $data['password'] = bcrypt($request->password);
+
+        $user->update($data);
+
+        return redirect()->route('users.index');
     }
 }
