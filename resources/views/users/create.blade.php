@@ -3,8 +3,8 @@
 @section('title', 'Novo usuário')
 
 @section('content')
-    <h1>Novo Usuário</h1>
-    
+    <h1 class="text-2xl font-semibold leading-tigh py-2 mt-4 mb-8">Novo Usuário</h1>
+
     @include('includes.validations-form')
 
     <form action="{{ route('users.store') }}" method="POST">
